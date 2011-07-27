@@ -1,0 +1,3 @@
+<% @cui_elements.each { |cio| %>
+  <%=    embed_action :controller => "mint", :action => cio.class.name.split('::').last, :id=>cio.name, :layout=>false %> 
+<% } %>

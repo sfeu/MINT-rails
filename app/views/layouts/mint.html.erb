@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>MINT - Framework</title>
+  <%= stylesheet_link_tag 'mint/mint' %>
+  <%= javascript_include_tag 'mint/jquery', 'mint/json','mint/jquery-ui-1.6.custom.min','mint/jquery.mousewheel'  %>
+
+  <script src="http://<%= HOST_IP %>:8080/application.js" type="text/javascript" charset="utf-8"></script>
+  <%= javascript_include_tag 'mint/thumb_display', 'mint/html_pointer' %>
+
+  <!-- , 'arframe','x3dom' %-->
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+          startWS("<%= HOST_IP %>");
+
+          $(window).resize(function(){
+              doLayout();
+          });
+          doLayout();
+          bindMouse();
+            bindTouch();
+      });
+
+      // adapts the canvas and main div to the actual window size
+      function doLayout(){
+          var h = $(window).height();
+          var w = $(window).width();
+
+          $('#pointerCanvas').width(w);
+          $('#pointerCanvas').height(h);
+          $('#main').width(w);
+          $('#main').height(h);
+      }
+  </script>
+
+  <style>
+
+      .layout-1 {
+          height: 100%;
+      }
+
+      .center {
+          background-color: rgb(220,220,220);
+          border: 1px solid rgb(200,200,200);
+          text-align: center;
+          display: inline-block;
+      }
+
+
+      canvas.touch {
+          position: absolute;
+      }
+  </style>
+
+
+</head>
+<body >
+<div id="pointerCanvas" >
+<div id="main" style="position: fixed; ">
+  <%= yield  %>
+</div>
+     </div>
+
+
+
+
+
+<script type="text/javascript">
+    disableSelection(document.body); //disable text selection on entire body of page
+</script>
+
+</body>
+</html>

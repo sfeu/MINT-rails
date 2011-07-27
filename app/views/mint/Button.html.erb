@@ -1,0 +1,14 @@
+<div <%= generate_layout_class(@button) %> >
+    <div id="confirm_<%= @field %>">
+
+      <%= form_remote_tag(
+      :url => { :action => :control } ) %>
+
+ <button class="ui-state-default ui-corner-all" type="submit" id="test1" value="test"><%= @aio.label %></button>
+	      
+	      <%= hidden_field_tag "id", @field %>
+
+</form>
+     
+  </div>
+</div>
