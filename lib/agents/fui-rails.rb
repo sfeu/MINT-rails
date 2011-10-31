@@ -76,7 +76,7 @@ class CUIAgent < Agent
   def hide_cui(result)
     puts "HIDE #{result.name}"
 
-    #@monitor.synchronize do
+    #@monitor.synchronize do    sele
     #      data = @av.render(:update) do |page|
     #        page["div##{result.name}"].removeClass('highlighted')
     #            page["div##{result.name}"].removeClass('displayed')
@@ -225,7 +225,7 @@ cui.addMapping(mapping_internal_hide)
 mapping_internal_select = ExecuteOnStateChange.new(AIINChoose,"chosen",cui.method(:select_cui))
 cui.addMapping(mapping_internal_select)
 
-mapping_internal_deselect = ExecuteOnStateChange.new(AIINChoose,"listed",cui.method(:deselect_cui))
+mapping_internal_deselect = ExecuteOnStateChange.new(AIINChoose,"unchosen",cui.method(:deselect_cui))
 cui.addMapping(mapping_internal_deselect)
 
 #mapping_internal_pointer_move = ExecuteOnStateChange.new(Pointer,[:moving],cui.method(:pointer_move))
